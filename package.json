@@ -9,7 +9,7 @@
     "pretest": "NODE_ENV=test npx sequelie-cli db:drop && NODE_ENV=test npx sequelize db:create",
     "test": "NODE_ENV=test jest --detectOpenHandles"
   },
-  "author": "Ranga Vardhan <rangavardhangamasu@gmail.com>",
+  "author": "Vallamalla Shirisha <shirishas625@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.8",
