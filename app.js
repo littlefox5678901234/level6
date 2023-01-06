@@ -9,10 +9,17 @@ const path = require("path");
 app.set("view engine", "ejs");
 
 app.get("/", async (request, response) => {
-  const allTodos = await Todo.getTodos();
+  const overdueTodos = await Todo.getOverdueTodos();
+  const dueTodayTodos = await Todo.getDueTodayTodos();
+  const dueLaterTodos = await Todo.getDueLaterTodos();
+  const todosCount = await Todo.getTodosCount();
+
   if (request.accepts("html")) {
     response.render("index", {
-      allTodos,
+      overdueTodos,
+      dueTodayTodos,
+      dueLaterTodos,
+      todosCount,
     });
   } else {
     response.json({
@@ -22,6 +29,11 @@ app.get("/", async (request, response) => {
 });
 
 app.use(express.static(path.join(__dirname, "public")));
+
+/* Sequelize-cli(Without UI) endpoints/route using express.js: */
+// app.get("/", function (request, response) {
+//   response.send("Hello World");
+// });
 
 app.get("/todos", async function (_request, response) {
   console.log("Processing list of all Todos ...");
